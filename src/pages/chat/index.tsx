@@ -113,7 +113,11 @@ function ChatPage() {
         status: 'error'
       })
       setChatDataInfo(selectChatId, assistantMessageId, {
-        status: 'error'
+        status: 'error',
+		text: `\`\`\`json
+${JSON.stringify(response, null, 4)}
+\`\`\`
+`
       })
       fetchController?.abort()
       setFetchController(null)
@@ -334,6 +338,7 @@ function ChatPage() {
                     status={item.status}
                     content={item.text}
                     time={item.dateTime}
+					model={item.requestOptions.options?.model}
                     onDelChatMessage={() => {
                       delChatMessage(selectChatId, item.id)
                     }}

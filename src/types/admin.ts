@@ -16,7 +16,9 @@ export interface CarmiInfo {
   value: string
   type: string
   end_time?: string
+  level: number
   status: number
+  user?: UserInfo
   create_time: string
   update_time: string
 }
@@ -26,6 +28,7 @@ export interface RequestAddCarmi {
   end_time: string
   quantity: number
   reward: number
+  level: number
 }
 
 export interface UserInfo {
@@ -34,7 +37,8 @@ export interface UserInfo {
   nickname: string
   avatar: string
   integral: number
-  subscribe: string
+  vip_expire_time: string
+  svip_expire_time: string
   ip: string
   status: number
   create_time: string
@@ -46,6 +50,7 @@ export interface TurnoverInfo {
   user_id: string
   value: string
   describe: string
+  user?: UserInfo
   create_time: string
   update_time: string
 }
@@ -55,6 +60,7 @@ export interface SigninInfo {
   user_id: string
   ip: string
   status: number
+  user?: UserInfo
   create_time: string
   update_time: string
 }
@@ -71,6 +77,7 @@ export interface MessageInfo {
   temperature: number
   parent_message_id: string
   status: number
+  user?: UserInfo
   create_time: string
   update_time: string
 }
@@ -80,10 +87,11 @@ export interface ProductInfo {
   title: string
   price: number
   original_price: number
-  integral?: number
+  value: number
   badge: string
-  day?: number
   status: number
+  type: string
+  level: number
   create_time: string
   update_time: string
 }
@@ -93,6 +101,7 @@ export interface TokenInfo {
   key: string
   host: string
   remarks: string
+  models: string
   limit: number
   usage: number
   status: number
@@ -134,22 +143,33 @@ export interface PaymentInfo {
 }
 
 export interface OrderInfo {
-	id: string;
-	trade_no?: string;
-	pay_type: string;
-	product_id: string;
-	product_title: string;
-	trade_status: string;
-	user_id: string;
-	product_info: string;
-	channel: string;
-	params: string;
-	payment_id: string;
-	payment_info: string;
-	money: number;
-	notify_info?: string;
-	pay_url?: string;
-	ip: string;
-	create_time: string;
-	update_time: string;
+  id: string
+  trade_no?: string
+  pay_type: string
+  product_id: string
+  product_title: string
+  trade_status: string
+  user_id: string
+  product_info: string
+  channel: string
+  params: string
+  payment_id: string
+  payment_info: string
+  money: number
+  notify_info?: string
+  pay_url?: string
+  ip: string
+  user?: UserInfo
+  create_time: string
+  update_time: string
+}
+
+export interface NotificationInfo {
+  id: number
+  title: string
+  content: string
+  sort: number
+  status: number
+  create_time: string
+  update_time: string
 }

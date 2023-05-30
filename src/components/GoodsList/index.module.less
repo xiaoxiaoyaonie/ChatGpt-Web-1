@@ -3,45 +3,32 @@
     flex-wrap: wrap;
     gap: 10px;
     &_item{
-        width: 130px;
-        min-height: 164px;
+		flex: 1;
+        min-width: 150px;
+        min-height: 11px;
+		box-sizing: content-box;
         background-color: #fff;
         border-radius: 8px;
-        padding-top: 30px;
+        padding: 20px 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        // align-items: center;
         border: 2px solid transparent;
         transition: border-color 0.4s ease-in-out;
         cursor: pointer;
         position: relative;
+
         &:hover{
             border-color: #1877ff;
-            .goodsList_item_button{
-                background-color: #1877ff;
-                border-top-color: #1877ff;
-                border-top-style: solid;
-                color: #FFF;
-            }
         }
+
+		&_select {
+			border-color: #1877ff;
+		}
+
         h3 {
-            font-size: 22px;
+            font-size: 24px;
             color: #1877ff;
-        }
-        p{
-            margin: 12px 0;
-            padding:4px 12px;
-            border-radius: 20px;
-            background-color: transparent;
-            border: 1px solid #4e9eea;
-            font-size: 14px;
-            color: #4e9eea;
-            font-weight: 500;
-            transition: color,background-color 0.4s ease-in-out;
-            // &:hover {
-            //     background-color: #1877ff;
-            //     color: #fff;
-            // }
         }
 
         &_tag{
@@ -55,21 +42,27 @@
             padding: 2px 6px;
         }
 
-        &_button{
-            margin-top: auto;
-            width: 130px;
-            height: 40px;
-            line-height: 40px;
-            font-size: 16px;
-            font-weight: 500;
-            text-align: center;
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 6px;
-            border-top-width: 1px;
-            border-top-color: #1877ff;
-            border-top-style: dashed;
-            color: #4e9eea;
-            transition: all 0.4s ease-in-out;
-        }
+		&_level{
+			color: #f4c17a;
+			font-weight: 500;
+			font-size: 14px;
+		}
+
+		&_price{
+			display: flex;
+			align-items: flex-end;
+			.sales_price{
+				font-size: 16px;
+				font-weight: 500;
+				color: #333;
+			}
+			.original_price{
+				font-size: 12px;
+				color: #999;
+				text-decoration: line-through;
+				margin-bottom: 2px;
+				margin-left: 4px;
+			}
+		}
     }
 }

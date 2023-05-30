@@ -4,13 +4,16 @@ import {
   RequestChatOptions,
   RequestImagesGenerations,
   RequestLoginParams,
+  ResponseConfigData,
   ResponseLoginData,
+  SigninInfo,
   SubscriptionInfo,
   TurnoverInfo,
   UserInfo
 } from '@/types'
 import request from '.'
 import { formatTime } from '@/utils'
+import { TableData } from '@/types/admin'
 
 // 获取验证码
 export function getCode(params: { source: string }) {
@@ -54,14 +57,14 @@ export function postImagesGenerations(
 
 // 获取商品列表
 export function getProduct() {
-  return request.get<{
-    count: number
-    rows: Array<ProductInfo>
+  return request.get< {
+	products: Array<ProductInfo>,
+	pay_types: Array<string>
   }>('/api/product')
 }
 
 // 获取用户消费记录
-export function getUserTurnover(params: { page: number; pageSize: number }) {
+export function getUserTurnover(params: { page: number; page_size: number }) {
   return request.get<{ count: number; rows: Array<TurnoverInfo> }>('/api/turnover', params)
 }
 
@@ -84,3 +87,18 @@ export function postUseCarmi(params: { carmi: string }) {
 export function postSignin() {
   return request.post('/api/signin')
 }
+
+// 获取签到列表
+export function getSigninList() {
+  return request.get<Array<SigninInfo>>('/api/signin/list')
+}
+
+// 重置用户密码
+export function putUserPassword(params: RequestLoginParams) {
+  return request.put('/api/user/password', params)
+}
+
+// 获取配置数据
+export function getConfig() {
+	return request.get<ResponseConfigData>('/api/config')
+  }

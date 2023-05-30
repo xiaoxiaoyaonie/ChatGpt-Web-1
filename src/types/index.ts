@@ -1,24 +1,35 @@
+import { NotificationInfo } from './admin'
+
 export interface RequestLoginParams {
   account: string
-  code: string | number
+  code?: string | number
+  password?: string
 }
 
 export interface UserInfo {
+  id: string
   account: string
   nickname: string
   avatar: string
   role: string
-  status: number
-  ip: string
-  created_at: string
   integral: number
-  subscribe: string
+  vip_expire_time: string
+  svip_expire_time: string
+  ip: string
+  status: number
+  create_time: string
+  update_time: string
   is_signin: number
 }
 
 export interface ResponseLoginData {
   user_info: UserInfo
   token?: string
+}
+export interface ResponseConfigData {
+  shop_introduce: string
+  user_introduce: string
+  notifications: NotificationInfo[]
 }
 
 export interface ChatGptConfig {
@@ -114,7 +125,7 @@ export interface SubscriptionInfo {
 }
 
 export interface RequesPrepay {
-  pay_type: 'alipay' | 'wxpay'
+  pay_type: 'alipay' | 'wxpay' | 'qqpay' | string
   product_id: number
   quantity: number
 }
@@ -125,9 +136,10 @@ export interface ProductInfo {
   price: number
   original_price: number
   badge: string
-  day: number
-  integral: number
+  value: number
   status: number
+  type: string
+  level: number
   create_time: string
   update_time: string
 }
@@ -137,6 +149,21 @@ export interface TurnoverInfo {
   user_id: string
   value: string
   describe: string
+  create_time: string
+  update_time: string
+}
+
+export interface PayTypeInfo {
+  icon: string
+  key: string
+  title: string
+}
+
+export interface SigninInfo {
+  id: number
+  user_id: string
+  ip: string
+  status: number
   create_time: string
   update_time: string
 }
